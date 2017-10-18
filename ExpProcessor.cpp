@@ -8,13 +8,12 @@
 using namespace std;
 
 map<string, char> ExpProcessor::operatorMap = { {"sin", 'a'}, {"cos", 'b'}, {"log", 'c'}, {"ln", 'd'} };
-map<char, double (*)(double)> ExpProcessor::unaryFuncMap = { {'+', [](double n){ return 0 + n; }},
+map<char, function<double(double)>> ExpProcessor::unaryFuncMap = { {'+', [](double n){ return 0 + n; }},
         {'-', [](double n){ return 0 - n; }}, {'a', static_cast<double (*)(double)>(sin)},
         {'b', static_cast<double (*)(double)>(cos)}, {'c', static_cast<double (*)(double)>(log10)},
         {'d', static_cast<double (*)(double)>(log)} };
-std::map<char, double (*)(double, double)> ExpProcessor::binaryFuncMap =
-        { {'+', [](double n1, double n2){ return n1 + n2; }}, {'-', [](double n1, double n2){ return n1 - n2; }},
-        {'*', [](double n1, double n2){ return n1 * n2; }}, {'/', [](double n1, double n2){ return n1 / n2; }},
+std::map<char, function<double(double, double)>> ExpProcessor::binaryFuncMap =
+        { {'+', std::plus<double>()}, {'-', minus<double>()}, {'*', multiplies<double>()}, {'/', divides<double>()},
         {'^', static_cast<double (*)(double, double)>(pow)} };
 
 
@@ -342,7 +341,6 @@ void ExpProcessor::operationError(char c, double n1, double n2)
     else if (c == '^' && n1 < 0)
         // 错误情况：对负数开方
         expError("*Illegitimate operation: Square root of a negative number*", -1);
-
 }
 
 

@@ -15,6 +15,7 @@
 #include <algorithm>
 #include <memory>
 #include <queue>
+#include <functional>
 
 struct ExpTreeNodeRecord;
 typedef std::shared_ptr<ExpTreeNodeRecord> ExpTreeNode;
@@ -25,8 +26,8 @@ class ExpProcessor
 {
 public:
     static std::map<std::string, char> operatorMap;
-    static std::map<char, double (*)(double)> unaryFuncMap;
-    static std::map<char, double (*)(double, double)> binaryFuncMap;
+    static std::map<char, std::function<double(double)>> unaryFuncMap;
+    static std::map<char, std::function<double(double, double)>> binaryFuncMap;
 
     ExpProcessor() = default;
     explicit ExpProcessor(std::string s) : expression(s), root(nullptr) { }
