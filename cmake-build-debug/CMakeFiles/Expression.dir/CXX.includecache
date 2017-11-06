@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/Wang/GitHub/Simple-Calculator/ExpProcessor.cpp
+complex
+-
+ExpProcessor.h
+/Users/Wang/GitHub/Simple-Calculator/ExpProcessor.h
+
+/Users/Wang/GitHub/Simple-Calculator/ExpProcessor.h
+cmath
+-
+string
+-
+iostream
+-
+map
+-
+stack
+-
+cctype
+-
+vector
+-
+algorithm
+-
+memory
+-
+queue
+-
+functional
+-
+
+/Users/Wang/GitHub/Simple-Calculator/main.cpp
+ExpProcessor.h
+/Users/Wang/GitHub/Simple-Calculator/ExpProcessor.h
+
