@@ -4,15 +4,22 @@ using namespace std;
 
 int main()
 {
-    string expression;
-    char ch;
-    // 利用cin性质将空格、制表符等去掉
-    while ((cin >> ch) && (ch != '='))
-        expression.push_back(ch);
+    cout << "Enter the expression you want to calculate, or 'q' to quit:\n" << endl;
 
-    ExpProcessor exp(expression);
+    while (1)
+    {
+        string expression;
+        char ch;
+        // 利用cin性质将空格、制表符等去掉
+        while ((cin >> ch) && (ch != '=') && (ch != 'q'))
+            expression.push_back(ch);
 
-    // TEST
+        if (ch == 'q')
+            break;
+
+        ExpProcessor exp(expression);
+
+        // TEST
 //    exp.testExpression();
 //    cout << endl;
 //    exp.testPreProcess();
@@ -25,8 +32,8 @@ int main()
 //    cout << endl;
 //    exp.testCalculate();
 
-    cout << exp.calculate() << endl;
-
+        cout << exp.calculate() << "\n" << endl;
+    }
     return 0;
 }
 

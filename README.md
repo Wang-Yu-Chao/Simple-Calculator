@@ -1,2 +1,4 @@
 # Simple-Calculator
-A simple calculator, interact with command line
+
+- A simple, scalable calculator, interact with command line.
+
